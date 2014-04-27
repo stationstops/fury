@@ -1,5 +1,60 @@
 <html>
+<head>
+<title>
+Fury Reader
+</title>
+<script src="js/jquery-2.1.0.min.js"></script>
+</head>
+<body>
+<h2>Fury Reader</h2>
+<div id="book_title">TITLE</div>
+<span id="word_count">0</span> words (approx. <span id="page_count">0
+</span>pages)
+<div id="curr_speed"> Speed: <input type=text size=1 value="0"> WPM </div>
+<div id="completion_time">Est. completion time: 0</div>
+<div id="textDiv" style="margin-top:100px;border:0px solid black;font-size:24pt;font-family:Helvetica,Sans-Serif;text-align:center;width:100%;margin-left:0;margin-right:0">intelligence</div>
+<a id="playpause" href="javascript:playpause()">Play</a>
 
-<div width="100%">intelligence</div>
 
+<script lang=javascript>
+
+var myTextArray;
+var myWordCount;
+var myInterval=false;
+
+getbook('./sampletext.txt');
+
+function getbook(bookURL){
+   
+    var req = new XMLHttpRequest();  
+    req.open('GET', bookURL, false);   
+    req.send(null);  
+    if(req.status == 200) {
+       myTextArray=req.responseText.split(/\s+/);
+       myWordCount=myTextArray.length;
+       console.log(myWordCount);
+   }
+}
+
+function playpause(){
+	
+	if(myInterval){
+		clearInterval(myInterval);
+		myInterval=false;
+	}else{
+		myInterval=setInterval(function(){getword()},300);
+	}
+}
+
+function getword(){
+		$('#textDiv').html(myTextArray.shift());
+}
+
+function sleep(millis, callback) {
+    setTimeout(function()
+            { callback(); }
+    , millis);
+}
+</script>
+</body>
 </html>
