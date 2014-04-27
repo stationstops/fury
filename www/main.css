@@ -1,0 +1,37 @@
+body{
+	font-family:helvetica,Arial,sans-serif;
+}
+
+#book_title{
+
+}
+
+#word_count{
+
+}
+
+#page_count{
+
+}
+
+#curr_speed{
+
+}
+
+#completion_time{
+
+}
+
+#textDiv{
+	margin-top:100px;
+	border:0px solid black;
+	font-size:24pt;
+	font-family:Helvetica,Sans-Serif;
+	text-align:center;width:100%;
+	margin-left:0;
+	margin-right:0;
+}
+
+#playpause{
+
+}
